@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="serial_imu" name="HI226" type="serial_imu" />
+	<node pkg="serial_imu" name="subscriber_HI226" type="imu_subscriber"
+	output="screen" />
+</launch>
