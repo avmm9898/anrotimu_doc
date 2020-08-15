@@ -38,7 +38,6 @@ The following provides open-source examples and official attitude recording soft
 | ---------------- | ---------------------------------------- |
 | doc              | User Guide                               |
 | examples         | Simple example of data receiving |
-| hardware         | Hardware documentation                   |
 | windows_pc_tools | Uranus software for Windows               |
 | usb_uart_drivers | USB drivers for Windows and Linux        |
 
