@@ -1,0 +1,8 @@
+{
+    "port": "COM41",
+    "baudrate": 115200,
+    "report_datatype": {
+      "imusol": true,
+      "gwsol": true
+    }
+}
