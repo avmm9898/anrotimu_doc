@@ -18,7 +18,6 @@
 | ---------------- | ------------------ |
 | doc              | 產品用戶手冊 (HI221、HI229)       |
 | examples         | 接收程式原始碼及各語言範例 (C#、C、Ubuntu、Arduino、Python) |
-| hardware         | 硬體資料           |
 | windows_pc_tools | 官方姿態記錄軟體 Uranus，僅支援 Windows             |
 | usb_uart_drivers | USB驅動程序，支援 Windows 與 Linux      |
 
