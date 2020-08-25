@@ -356,6 +356,7 @@ def _parse_data_packet_0x91(data_section:list,node_num = None):
     gyr_temp_list = []
     mag_temp_list = []
     eul_temp_list = []
+    int_eul_temp_list = []
     quat_temp_list = []
     # id
     id = data_section[pos]
@@ -408,10 +409,13 @@ def _parse_data_packet_0x91(data_section:list,node_num = None):
     mag_temp_list.append(mag_dic)
     #eul
     eul_Roll = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
+    eul_Roll = round(eul_Roll, 2) 
     pos += 4
     eul_Pitch = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
+    eul_Pitch= round(eul_Pitch, 2) 
     pos += 4
     eul_Yaw = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
+    eul_Yaw = round(eul_Yaw, 2) 
     pos += 4
     eul_dic = {
         "Roll": eul_Roll,
@@ -419,6 +423,13 @@ def _parse_data_packet_0x91(data_section:list,node_num = None):
         "Yaw": eul_Yaw
     }
     eul_temp_list.append(eul_dic)
+
+    int_eul_dic = {
+            "Roll": int(eul_Roll),
+            "Pitch": int(eul_Pitch),
+            "Yaw": int(eul_Yaw)
+    }
+    int_eul_temp_list.append(int_eul_dic)
     #quat
     quat_W = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
     pos += 4
@@ -443,7 +454,8 @@ def _parse_data_packet_0x91(data_section:list,node_num = None):
         "acc":acc_temp_list,
         "gyr":gyr_temp_list,
         "mag":mag_temp_list,
-        "eul":eul_temp_list,
+        "int_eul":int_eul_temp_list,
+        "float_eul":eul_temp_list,
         "quat":quat_temp_list
     }
     return temp_dic
@@ -460,6 +472,7 @@ def _parse_data_packet_0x62(data_section:list,node_num = None):
     gyr_temp_list = []
     mag_temp_list = []
     eul_temp_list = []
+    int_eul_temp_list = []
     quat_temp_list = []
     pos = 0
     gwid = data_section[0]
@@ -525,10 +538,13 @@ def _parse_data_packet_0x62(data_section:list,node_num = None):
         mag_temp_list.append(mag_dic)
         #eul
         eul_Roll = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
+        eul_Roll = round(eul_Roll, 2)  
         pos += 4
         eul_Pitch = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
+        eul_Pitch = round(eul_Pitch, 2) 
         pos += 4
         eul_Yaw = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
+        eul_Yaw = round(eul_Yaw, 2) 
         pos += 4
         eul_dic = {
             "Roll": eul_Roll,
@@ -536,6 +552,14 @@ def _parse_data_packet_0x62(data_section:list,node_num = None):
             "Yaw": eul_Yaw
         }
         eul_temp_list.append(eul_dic)
+
+        int_eul_dic = {
+            "Roll": int(eul_Roll),
+            "Pitch": int(eul_Pitch),
+            "Yaw": int(eul_Yaw)
+        }
+        int_eul_temp_list.append(int_eul_dic)
+
         #quat
         quat_W = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
         pos += 4
@@ -561,7 +585,8 @@ def _parse_data_packet_0x62(data_section:list,node_num = None):
         "acc":acc_temp_list,
         "gyr":gyr_temp_list,
         "mag":mag_temp_list,
-        "eul":eul_temp_list,
+        "int_eul":int_eul_temp_list,
+        "float_eul":eul_temp_list,
         "quat":quat_temp_list
     }
     return temp_dic

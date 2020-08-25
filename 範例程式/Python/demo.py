@@ -9,11 +9,16 @@ import time
 
 if __name__ == '__main__':
 
-    HI221GW = hipnuc_module('./config.json')
-
+    #my_IMU 變數名稱
+    my_IMU = hipnuc_module('./config.json')
+    
     while True:
-        data = HI221GW.get_module_data()
-
-        # print(data)
-
-        time.sleep(0.010)
+        try:
+            data = my_IMU.get_module_data()
+        except:
+            my_IMU.close()
+            break
+            
+        #id, timestamp, acc, gyr, quat, id, linacc, float_eul, int_eul
+        print(data)
+        #print(data['int_eul'])

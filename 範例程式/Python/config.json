@@ -1,5 +1,5 @@
 {
-    "port": "COM41",
+    "port": "COM10",
     "baudrate": 115200,
     "report_datatype": {
       "imusol": true,
