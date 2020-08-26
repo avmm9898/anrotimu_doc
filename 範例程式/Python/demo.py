@@ -20,5 +20,5 @@ if __name__ == '__main__':
             break
             
         #id, timestamp, acc, gyr, quat, id, linacc, float_eul, int_eul
-        print(data)
-        #print(data['int_eul'])
+        #print(data)
+        print(data['int_eul'])
