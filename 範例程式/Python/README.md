@@ -28,18 +28,24 @@ pip install -r requirements.txt
   from hipnuc_module import *
   import time
   
+  
   if __name__ == '__main__':
   
-      HI221GW = hipnuc_module('./config.json')
-  
+      #my_IMU 變數名稱
+      my_IMU = hipnuc_module('./config.json')
+      
       while True:
-          data = HI221GW.get_module_data()
-  
-          print(data)
-  
-          time.sleep(0.010)
+          try:
+              data = my_IMU.get_module_data()
+          except:
+              my_IMU.close()
+            break
+              
+          #id, timestamp, acc, gyr, quat, id, linacc, float_eul, int_eul
+          #print(data)
+          print(data['int_eul'])
   ```
-
+  
   
 
 ## API說明
@@ -95,7 +101,7 @@ pip install -r requirements.txt
 ```json
 {
     "port": "COM11",
-    "baudrate": 460800,
+    "baudrate": 115200,
     "report_datatype": {
       "Expanding Information": false,
       "acc": true,
