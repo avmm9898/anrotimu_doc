@@ -19,7 +19,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     include/imu_data_decode.cpp \
     include/packet.cpp \
-    include/packet.cpp \
     main.cpp \
     mainwindow.cpp
 
