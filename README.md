@@ -14,10 +14,10 @@
 
 | 資料夾            | 說明               |
 | ---------------- | ------------------ |
-| 使用說明書            | 產品用戶手冊 (CH110、HI221、HI226、HI229) |
-| 範例程式         | 接收程式原始碼及各語言範例  |
-| Windows官方軟體 | 官方姿態記錄軟體 Uranus，僅支援 Windows             |
-| USB drivers | 提供 Windows/Linux 的 USB 驅動，一般已經內建。CH110/HI226/HI229 請安裝 CP2104.zip。HI221/221GW 請安裝 CH341SER.EXE。     |
+| UserManual | 產品用戶手冊 (CH110、HI221、HI226、HI229) |
+| Examples   | 資料接收程式原始碼及各語言範例 |
+| UranusGUI  | 官方姿態記錄軟體 Uranus，僅支援 Windows             |
+| UsbDrivers | 提供 Windows/Linux 的 USB 驅動，一般已經內建。CH110/HI226/HI229 請安裝 CP2104.zip。HI221/221GW 請安裝 CH341SER.EXE。     |
 
 [下載全部](https://github.com/avmm9898/hipnuctw_doc/archive/master.zip)
 
