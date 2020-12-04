@@ -15,7 +15,7 @@
 | 資料夾            | 說明               |
 | ---------------- | ------------------ |
 | 使用說明書            | 產品用戶手冊 (CH110、HI221、HI226、HI229) |
-| 範例程式         | 接收程式原始碼及各語言範例 (C#、C、Ubuntu、Arduino、Python) |
+| 範例程式         | 接收程式原始碼及各語言範例  |
 | Windows官方軟體 | 官方姿態記錄軟體 Uranus，僅支援 Windows             |
 | USB驅動 | USB驅動，提供 Windows 與 Linux 的USB驅動程式，一般Win10已經內建。CH110/HI226/HI229請安裝CP2104.zip。HI221請安裝CH341SER.EXE。     |
 
