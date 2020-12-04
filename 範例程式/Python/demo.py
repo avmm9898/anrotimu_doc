@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-' a test module '
-
 from hipnuc_module import *
 import time
 
-
 if __name__ == '__main__':
 
-    #my_IMU 變數名稱
-    my_IMU = hipnuc_module('./config.json')
-    
+    # m_IMU_serial= class of hipnuc_module 
+    m_IMU_serial = hipnuc_module('./config.json')
+
     while True:
         try:
-            data = my_IMU.get_module_data()
+            data = m_IMU_serial.get_module_data(1)
         except:
-            my_IMU.close()
+            print("Serial closed.")
+            m_IMU_serial.close()
             break
-            
-        #id, timestamp, acc, gyr, quat, id, linacc, float_eul, int_eul
-        #print(data)
-        print(data['int_eul'])
+
+        try:
+            #this prints all : print(data)#
+
+            #id, timestamp, acc, gyr, quat, mag, euler#
+            print(data['euler'])
+        except:
+            print("Print error.")
+            m_IMU_serial.close()
+            break

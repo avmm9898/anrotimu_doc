@@ -1,8 +1,14 @@
 {
-    "port": "COM10",
-    "baudrate": 115200,
-    "report_datatype": {
-      "imusol": true,
-      "gwsol": true
-    }
+  "port": "COM19",
+  "baudrate": 115200,
+  "report_datatype": {
+    "imusol": true,
+    "gwsol": true,
+    "id": true,
+    "acc": true,
+    "gyr": true,
+    "mag": true,
+    "euler": true,
+    "quat": true
+  }
 }

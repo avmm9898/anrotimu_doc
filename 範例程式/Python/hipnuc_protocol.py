@@ -29,40 +29,6 @@ def _parse_data_packet_0x90(data_section:list,node_num = None):
     }
     return module_id
 
-def _parse_data_packet_0x61(data_section:list,node_num = None):
-    HI221GW_property = {
-        "GWID": data_section[1],
-        "CNT": data_section[2]
-    }
-    return HI221GW_property
-
-def _parse_data_packet_0x71(data_section:list,node_num = None):
-    quaternion_list = []
-
-    for pos in range(node_num):
-        t_pos = pos * 16
-        W = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-        t_pos += 4
-        X = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-        t_pos += 4
-        Y = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-        t_pos += 4
-        Z = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-
-        temp_dic = {
-            "W":W,
-            "X":X,
-            "Y":Y,
-            "Z":Z
-        }
-        quaternion_list.append(temp_dic)
-
-    quaternion = {
-        "quat":quaternion_list
-    }
-
-    return quaternion
-
 def _parse_data_packet_0xD1(data_section:list,node_num = None):
     quaternion_list = []
 
@@ -91,30 +57,6 @@ def _parse_data_packet_0xD1(data_section:list,node_num = None):
 
     return quaternion
 
-def _parse_data_packet_0x75(data_section:list,node_num = None):
-    acc_list = []
-
-    for pos in range(node_num):
-        t_pos = pos * 6
-        X = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-        t_pos += 2
-        Y = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-        t_pos += 2
-        Z = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-
-        temp_dic = {
-            "X":X,
-            "Y":Y,
-            "Z":Z
-        }
-        acc_list.append(temp_dic)
-
-    acc = {
-        "acc":acc_list
-    }
-
-    return acc
-
 def _parse_data_packet_0xA0(data_section:list,node_num = None):
     acc_list = []
 
@@ -139,55 +81,6 @@ def _parse_data_packet_0xA0(data_section:list,node_num = None):
     }
 
     return acc
-
-def _parse_data_packet_0xA5(data_section:list,node_num = None):
-    linacc_list = []
-
-    # for pos in range(node_num):
-    pos = 0
-    t_pos = pos * 6
-    X = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-    t_pos += 2
-    Y = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-    t_pos += 2
-    Z = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-
-    temp_dic = {
-        "X":X,
-        "Y":Y,
-        "Z":Z
-    }
-    linacc_list.append(temp_dic)
-
-    linacc = {
-        "linacc_list":linacc_list
-    }
-
-    return linacc
-
-def _parse_data_packet_0x78(data_section:list,node_num = None):
-    gyr_list = []
-
-    for pos in range(node_num):
-        t_pos = pos * 6
-        X = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-        t_pos += 2
-        Y = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-        t_pos += 2
-        Z = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-
-        temp_dic = {
-            "X":X,
-            "Y":Y,
-            "Z":Z
-        }
-        gyr_list.append(temp_dic)
-
-    gyr = {
-        "gyr":gyr_list
-    }
-
-    return gyr
 
 def _parse_data_packet_0xB0(data_section:list,node_num = None):
     gyr_list = []
@@ -245,13 +138,13 @@ def _parse_data_packet_0xD0(data_section:list,node_num = None):
     # for pos in range(node_num):
     pos = 0
     t_pos = pos * 6
-    Pitch = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
+    Pitch = struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0]
     Pitch = Pitch/100
     t_pos += 2
-    Roll = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
+    Roll = struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0]
     Roll = Roll/100
     t_pos += 2
-    Yaw = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
+    Yaw = struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0]
     Yaw = Yaw/10
 
     temp_dic = {
@@ -261,92 +154,11 @@ def _parse_data_packet_0xD0(data_section:list,node_num = None):
     }
     eul_list.append(temp_dic)
 
-    int_eul = {
-        "int_eul":eul_list
+    euler = {
+        "euler":eul_list
     }
 
-    return int_eul
-
-def _parse_data_packet_0x72(data_section:list,node_num = None):
-    eul_list = []
-
-    for pos in range(node_num):
-        t_pos = pos * 6
-        Pitch = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-        Pitch = Pitch/100
-        t_pos += 2
-        Roll = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-        Roll = Roll/100
-        t_pos += 2
-        Yaw = int(struct.unpack("<h", bytes(data_section[t_pos:t_pos + 2]))[0])
-        Yaw = Yaw/10
-
-        temp_dic = {
-            "Pitch":Pitch,
-            "Roll":Roll,
-            "Yaw":Yaw
-        }
-        eul_list.append(temp_dic)
-
-    int_eul = {
-        "int_eul":eul_list
-    }
-
-    return int_eul
-
-def _parse_data_packet_0xD9(data_section:list,node_num = None):
-    float_eul_list = []
-
-    # for pos in range(node_num):
-    pos = 0
-    t_pos = pos * 12
-    Pitch = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-    t_pos += 4
-    Roll = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-    t_pos += 4
-    Yaw = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-
-    temp_dic = {
-        "Pitch":Pitch,
-        "Roll":Roll,
-        "Yaw":Yaw
-    }
-
-    float_eul_list.append(temp_dic)
-
-    float_eul = {
-        "float_eul":float_eul_list
-    }
-
-    return float_eul
-
-def _parse_data_packet_0x60(data_section:list,node_num = None):
-    test_8f_list = []
-    for pos in range(8):
-        t_pos = pos * 4
-        test_f = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-
-        test_8f_list.append(test_f)
-
-    test_8f = {
-        "test_8f": test_8f_list,
-    }
-
-    return test_8f
-
-def _parse_data_packet_0xF0(data_section:list,node_num = None):
-    prs_list = []
-    # for pos in range(node_num):
-    t_pos = 0
-    prs_f = float(struct.unpack("<f", bytes(data_section[t_pos:t_pos + 4]))[0])
-
-    prs_list.append(prs_f)
-
-    prs = {
-        "prs": prs_list,
-    }
-
-    return prs
+    return euler
 
 def _parse_data_packet_0x91(data_section:list,node_num = None):
     pos = 0
@@ -356,7 +168,6 @@ def _parse_data_packet_0x91(data_section:list,node_num = None):
     gyr_temp_list = []
     mag_temp_list = []
     eul_temp_list = []
-    int_eul_temp_list = []
     quat_temp_list = []
     # id
     id = data_section[pos]
@@ -424,12 +235,6 @@ def _parse_data_packet_0x91(data_section:list,node_num = None):
     }
     eul_temp_list.append(eul_dic)
 
-    int_eul_dic = {
-            "Roll": int(eul_Roll),
-            "Pitch": int(eul_Pitch),
-            "Yaw": int(eul_Yaw)
-    }
-    int_eul_temp_list.append(int_eul_dic)
     #quat
     quat_W = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
     pos += 4
@@ -454,8 +259,7 @@ def _parse_data_packet_0x91(data_section:list,node_num = None):
         "acc":acc_temp_list,
         "gyr":gyr_temp_list,
         "mag":mag_temp_list,
-        "int_eul":int_eul_temp_list,
-        "float_eul":eul_temp_list,
+        "euler":eul_temp_list,
         "quat":quat_temp_list
     }
     return temp_dic
@@ -472,7 +276,6 @@ def _parse_data_packet_0x62(data_section:list,node_num = None):
     gyr_temp_list = []
     mag_temp_list = []
     eul_temp_list = []
-    int_eul_temp_list = []
     quat_temp_list = []
     pos = 0
     gwid = data_section[0]
@@ -553,13 +356,6 @@ def _parse_data_packet_0x62(data_section:list,node_num = None):
         }
         eul_temp_list.append(eul_dic)
 
-        int_eul_dic = {
-            "Roll": int(eul_Roll),
-            "Pitch": int(eul_Pitch),
-            "Yaw": int(eul_Yaw)
-        }
-        int_eul_temp_list.append(int_eul_dic)
-
         #quat
         quat_W = float(struct.unpack("<f", bytes(data_section[pos:pos + 4]))[0])
         pos += 4
@@ -585,13 +381,13 @@ def _parse_data_packet_0x62(data_section:list,node_num = None):
         "acc":acc_temp_list,
         "gyr":gyr_temp_list,
         "mag":mag_temp_list,
-        "int_eul":int_eul_temp_list,
-        "float_eul":eul_temp_list,
+        "euler":eul_temp_list,
         "quat":quat_temp_list
     }
     return temp_dic
 
 data_packet_properties = {
+    # id
     0x90: {
         "type": "id",
         "id_len": 1,
@@ -599,37 +395,7 @@ data_packet_properties = {
         "parse method": _parse_data_packet_0x90,
         "gw_data":False
     },
-    0x61:{
-        "type":"Expanding Information",
-        "id_len":1,
-        "data_len":3,
-        "parse method":_parse_data_packet_0x61,
-        "gw_data":True
-    },
-    # gw_quat
-    0x71:{
-        "type":"quat",
-        "id_len":1,
-        "data_len":16,
-        "parse method":_parse_data_packet_0x71,
-        "gw_data":True
-    },
-    # quat
-    0xD1: {
-        "type": "quat",
-        "id_len": 1,
-        "data_len": 16,
-        "parse method": _parse_data_packet_0xD1,
-        "gw_data":False
-    },
-    # gw_acc
-    0x75:{
-        "type":"acc",
-        "id_len": 1,
-        "data_len": 6,
-        "parse method": _parse_data_packet_0x75,
-        "gw_data": True
-    },
+    
     # acc
     0xA0: {
         "type": "acc",
@@ -637,22 +403,6 @@ data_packet_properties = {
         "data_len": 6,
         "parse method": _parse_data_packet_0xA0,
         "gw_data": False
-    },
-    # linacc
-    0xA5: {
-        "type": "linacc",
-        "id_len": 1,
-        "data_len": 6,
-        "parse method": _parse_data_packet_0xA5,
-        "gw_data": False
-    },
-    #gw_gyr
-    0x78:{
-        "type":"gyr",
-        "id_len": 1,
-        "data_len": 6,
-        "parse method": _parse_data_packet_0x78,
-        "gw_data": True
     },
     # gyr
     0xB0: {
@@ -670,44 +420,23 @@ data_packet_properties = {
         "parse method": _parse_data_packet_0xC0,
         "gw_data": False
     },
-    # int_eul
+    # float_eul
     0xD0: {
-        "type": "int_eul",
+        "type": "euler",
         "id_len": 1,
         "data_len": 6,
         "parse method": _parse_data_packet_0xD0,
         "gw_data": False
     },
-    # gw_int_eul
-    0x72: {
-        "type": "int_eul",
+    # quat
+    0xD1: {
+        "type": "quat",
         "id_len": 1,
-        "data_len": 6,
-        "parse method": _parse_data_packet_0x72,
-        "gw_data": True
+        "data_len": 16,
+        "parse method": _parse_data_packet_0xD1,
+        "gw_data":False
     },
-    # float_eul
-    0xD9: {
-        "type": "float_eul",
-        "id_len": 1,
-        "data_len": 12,
-        "parse method": _parse_data_packet_0xD9,
-        "gw_data": False
-    },
-    0x60: {
-        "type": "test_8f",
-        "id_len": 1,
-        "data_len": 32,
-        "parse method": _parse_data_packet_0x60,
-        "gw_data": False
-    },
-    0xF0: {
-        "type": "prs",
-        "id_len": 1,
-        "data_len": 4,
-        "parse method": _parse_data_packet_0xF0,
-        "gw_data": False
-    },
+    # imusol
     0x91: {
         "type": "imusol",
         "id_len": 1,
@@ -715,6 +444,7 @@ data_packet_properties = {
         "parse method": _parse_data_packet_0x91,
         "gw_data": False
     },
+    # gwimusol
     0x62: {
         "type": "gwsol",
         "id_len": 1,
