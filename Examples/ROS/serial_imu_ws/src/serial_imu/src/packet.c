@@ -16,6 +16,7 @@
 #define CH_ERR  (1)
 #endif
 
+uint32_t frame_count;
 
 static void crc16_update(uint16_t *currect_crc, const uint8_t *src, uint32_t len)
 {
@@ -99,35 +100,39 @@ uint32_t packet_decode(uint8_t c)
     {
         case kStatus_Idle:
             if(c == 0x5A)
-			{
 				status = kStatus_Cmd;
-			}
 			break;
+
         case kStatus_Cmd:
             RxPkt->type = c;
 			if(RxPkt->type == 0xA5)
 				status = kStatus_LenLow;
             break;
+
         case kStatus_LenLow:
             RxPkt->payload_len = c;
             crc_header[2] = c;
             status = kStatus_LenHigh;
             break;
+
         case kStatus_LenHigh:
             RxPkt->payload_len |= (c<<8);
             crc_header[3] = c;
             status = kStatus_CRCLow;
             break;
+
         case kStatus_CRCLow:
             CRCReceived = c;
             status = kStatus_CRCHigh;
             break;
+
         case kStatus_CRCHigh:
             CRCReceived |= (c<<8);
             RxPkt->ofs = 0;
             CRCCalculated = 0;
             status = kStatus_Data;
             break;
+
         case kStatus_Data:
 	
             RxPkt->buf[RxPkt->ofs++] = c;
@@ -153,11 +158,13 @@ uint32_t packet_decode(uint8_t c)
                 /* CRC match */
                 if(CRCCalculated == CRCReceived)
                 {
+					frame_count++;
                     event_handler(RxPkt);
                 }
                 status = kStatus_Idle;
             }
             break;
+			
         default:
             status = kStatus_Idle;
             break;

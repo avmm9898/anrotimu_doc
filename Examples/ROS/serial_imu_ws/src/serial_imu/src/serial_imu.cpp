@@ -24,6 +24,7 @@ extern "C"{
 #define BAUD         (115200)
 #define GRA_ACC      (9.8)
 #define DEG_TO_RAD   (0.01745329)
+#define BUF_SIZE     1024
 
 int imu_data_decode_init(void);
 typedef void (*on_data_received_event)(packet_t *ptr);
@@ -101,8 +102,11 @@ int main(int argc, char** argv)
 		size_t num = sp.available();
 		if(num!=0)
 		{
-			uint8_t buffer[1024];
-
+			uint8_t buffer[BUF_SIZE]; 
+	
+			if(num > BUF_SIZE)
+				num = BUF_SIZE;
+			
 			num = sp.read(buffer, num);
 			if(num > 0)
 			{
@@ -111,7 +115,6 @@ int main(int argc, char** argv)
 
 				imu_data.header.stamp = ros::Time::now();
 				imu_data.header.frame_id = "base_link";
-
 				puts("\033c");
 				if(receive_gwsol.tag != KItemGWSOL)
 				{

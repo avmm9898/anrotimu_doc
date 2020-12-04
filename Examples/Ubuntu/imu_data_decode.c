@@ -6,13 +6,12 @@
 
 static packet_t RxPkt; /* used for data receive */
 /*
- **採用結構體來保存數據
- **將標誌位都集中到一個32位的變量上，用位來表示
- **在複製數據時，在用戶程序中直接調用一個memcpy函數
+ **采用结构体来保存数据
+ **将标志位都集中到一个32位的变量上，用位来表示
+ **在复制数据时，在用户程序中直接调用一个memcpy函数
  */
 
 uint8_t bitmap;
-uint32_t frame_count;
 receive_imusol_packet_t receive_imusol;
 receive_gwsol_packet_t receive_gwsol;
 
@@ -36,14 +35,10 @@ static void on_data_received(packet_t *pkt)
 	{
 		return;
 	}
-
+	
+	bitmap = 0;
 	while(offset < pkt->payload_len)
 	{
-		if(offset == 0)
-		{
-			frame_count++;	
-			bitmap = 0;
-		}
 		switch(p[offset])
 		{
 		case kItemID:
@@ -51,6 +46,7 @@ static void on_data_received(packet_t *pkt)
 			receive_imusol.id = p[1];
 			offset += 2;
 			break;
+
 		case kItemAccRaw:
 			bitmap |= BIT_VALID_ACC;
 			stream2int16(temp, p + offset + 1);
@@ -59,7 +55,9 @@ static void on_data_received(packet_t *pkt)
 			receive_imusol.acc[2] = (float)temp[2] / 1000;
 			offset += 7;
 			break;
+
 		case kItemGyrRaw:
+		case kItemGyrRaw_yunjing:
 			bitmap |= BIT_VALID_GYR;
 			stream2int16(temp, p + offset + 1);
 			receive_imusol.gyr[0] = (float)temp[0] / 10;
@@ -67,6 +65,7 @@ static void on_data_received(packet_t *pkt)
 			receive_imusol.gyr[2] = (float)temp[2] / 10;
 			offset += 7;
 			break;
+
 		case kItemMagRaw:
 			bitmap |= BIT_VALID_MAG;
 			stream2int16(temp, p + offset + 1);
@@ -75,34 +74,35 @@ static void on_data_received(packet_t *pkt)
 			receive_imusol.mag[2] = (float)temp[2] / 10;
 			offset += 7;
 			break;
+
 		case kItemRotationEul:
 			bitmap |= BIT_VALID_EUL;
 			stream2int16(temp, p + offset + 1);
 			receive_imusol.eul[1] = (float)temp[0] / 100;
 			receive_imusol.eul[0] = (float)temp[1] / 100;
-			receive_imusol.eul[2] = (float)temp[2] / 10;
+			receive_imusol.eul[2] = (float)temp[2] / 10; 
 			offset += 7;
 			break;
+
 		case kItemRotationQuat:
 			bitmap |= BIT_VALID_QUAT;
 			memcpy(receive_imusol.quat, p + offset + 1, sizeof( receive_imusol.quat));
 			offset += 17;
 			break;
+
 		case kItemPressure:
 			offset += 5;
 			break; 
 
 		case KItemIMUSOL:
 			bitmap = BIT_VALID_ALL;
-
 			receive_imusol.id =p[offset + 1];
 			memcpy(&receive_imusol.times, p + 8, sizeof(int)); 	
 			memcpy(receive_imusol.acc, p + 12, sizeof(float) * 16);
-
 			offset += 76;
 			break;
-		case KItemGWSOL:
 
+		case KItemGWSOL:
 			receive_gwsol.tag = p[offset];
 			receive_gwsol.gw_id = p[offset + 1]; 
 			receive_gwsol.n = p[offset + 2];
@@ -117,7 +117,9 @@ static void on_data_received(packet_t *pkt)
 				offset += 76;
 			}
 			break;
+
 		default:
+			/* offset ==> 0 2 9 16 23 30 47 52 76 */
 			offset++;
 		}
 	}

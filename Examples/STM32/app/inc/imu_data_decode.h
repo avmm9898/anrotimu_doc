@@ -5,9 +5,7 @@
 #include <stdbool.h>
 #define MAX_LENGTH 16
 
-extern uint32_t frame_count;
 extern uint8_t bitmap;
-
 
 #define BIT_VALID_ID   (0x01)
 #define BIT_VALID_ACC  (0x02)
@@ -42,6 +40,7 @@ typedef enum
     kItemID =                   0x90,   /* user programed ID   */
     kItemAccRaw =               0xA0,   /* raw acc             */
     kItemGyrRaw =               0xB0,   /* raw gyro            */  
+	kItemGyrRaw_yunjing =       0xB1,   /* raw gyro yunjing    */
     kItemMagRaw =               0xC0,   /* raw mag             */
     kItemRotationEul =          0xD0,   /* eular angle         */
     kItemRotationQuat =         0xD1,   /* att q               */

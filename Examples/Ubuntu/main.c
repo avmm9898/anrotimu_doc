@@ -43,7 +43,7 @@ int open_port(char *port_device)
 		exit(0);
 	}
 
-	if(fcntl(fd, F_SETFL, 0)<0)
+	if(fcntl(fd, F_SETFL, 0) < 0)
 	{
 		printf("fcntl failed\n");
 	}
@@ -52,7 +52,7 @@ int open_port(char *port_device)
 		fcntl(fd, F_SETFL, 0);
 	}
   
-	if(isatty(STDIN_FILENO)==0)
+	if(isatty(STDIN_FILENO) == 0)
 	{
 		printf("standard input is not a terminal device\n");
 	}
@@ -62,9 +62,9 @@ int open_port(char *port_device)
 	}
 
 
-	bzero(&options,sizeof(options));
+	bzero(&options, sizeof(options));
 
-	options.c_cflag = B115200 | CS8 | CLOCAL |CREAD;
+	options.c_cflag = B115200 | CS8 | CLOCAL | CREAD;
 	options.c_iflag = IGNPAR;
 	options.c_oflag = 0;
 	options.c_lflag = 0;
@@ -120,7 +120,7 @@ int main(int argc, const char *argv[])
 				packet_decode(buf[i]);
 			}
 			puts("\033c");
-
+		//	frame_count++;
 			if(receive_gwsol.tag != KItemGWSOL)
 			{
 			//	 printf imu data packet 
@@ -142,7 +142,6 @@ int main(int argc, const char *argv[])
 			}
 		}
 	}	
-	sleep(1);
 
 	close(fd);
 }

@@ -13,7 +13,7 @@
 #ifndef CH_ERR
 #define CH_ERR  (1)
 #endif
-
+uint32_t frame_count;
 
 static void crc16_update(uint16_t *currect_crc, const uint8_t *src, uint32_t len)
 {
@@ -142,6 +142,7 @@ uint32_t packet_decode(uint8_t c)
                 /* CRC match */
                 if(CRCCalculated == CRCReceived)
                 {
+					frame_count++;
                     event_handler(RxPkt);
                 }
                 status = kStatus_Idle;
