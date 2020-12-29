@@ -17,7 +17,7 @@
 | 資料夾            | 說明               |
 | ---------------- | ------------------ |
 | 01_UserManual | IMU 產品用戶手冊 (CH110、HI221、HI226、HI229) |
-| 02_UranusGUI |官方姿態記錄軟體 Uranus，僅支援 Windows |
+| 02_GUI |使用者介面，呈現圖表、數值、記錄功能，僅支援 Windows |
 | 03_Examples |   資料接收程式原始碼及各語言範例       |
 | 04_UsbDrivers | 提供 Windows/Linux 的 USB 驅動，一般已經內建。<br/>CH110/HI226/HI229 請安裝 CP2104.zip。<br/>HI221/221GW 請安裝 CH341SER.EXE。 |
 | 05_OpenHardware | HI226/HI229的硬體尺寸圖 |
