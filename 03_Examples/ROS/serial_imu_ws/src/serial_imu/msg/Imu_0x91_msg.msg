@@ -1,0 +1,23 @@
+#90 91 data_package
+Header header
+uint8 tag
+uint8 bitmap
+uint8 id
+uint32 times
+uint32 frame_rate
+float32 acc_x
+float32 acc_y
+float32 acc_z
+float32 gyr_x
+float32 gyr_y
+float32 gyr_z
+float32 mag_x
+float32 mag_y
+float32 mag_z
+float32 eul_r
+float32 eul_p
+float32 eul_y
+float32 quat_w
+float32 quat_x
+float32 quat_y
+float32 quat_z

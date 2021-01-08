@@ -68,6 +68,10 @@
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>turtlesim</exec_depend>
 
+  <url>http://ros.org/wiki/sensor_mags</url>
+
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

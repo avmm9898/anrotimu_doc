@@ -110,6 +110,7 @@ static void on_data_received(packet_t *pkt)
 			for (int i = 0; i < receive_gwsol.n; i++)
 			{
 				bitmap = BIT_VALID_ALL;
+				bitmap &= ~BIT_VALID_TIMES;
 				receive_gwsol.receive_imusol[i].tag = p[offset];
 				receive_gwsol.receive_imusol[i].id = p[offset + 1];
 				memcpy(&receive_gwsol.receive_imusol[i].acc, p + offset + 12 , sizeof(float) * 16);

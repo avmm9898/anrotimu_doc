@@ -1,5 +1,6 @@
 <launch>
-	<node pkg="serial_imu" name="HI226" type="serial_imu" />
-	<node pkg="serial_imu" name="subscriber_HI226" type="imu_subscriber"
-	output="screen" />
+	<arg name="imu_package" default="spec" doc="package type [spec,0x91]"/>
+	
+	<include file="$(find imu_launch)/launch/imu_$(arg imu_package)_msg.launch"/>
+	
 </launch>
