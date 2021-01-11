@@ -1,4 +1,4 @@
-## Latest Released : 2.1 Beta
+## Latest Released : 2.2
 Base on QT C++
 
 - 包含所有產品的
