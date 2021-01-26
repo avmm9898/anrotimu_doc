@@ -9,10 +9,12 @@
 ## 軟體中心簡介
 
 本公司持續維護、更新產品與軟體，為用戶提供更良好的使用體驗與功能，<br>
-以下包含所有產品資料，包含說明書、驅動程式，開源範例與官方姿態記錄軟體，<br>
+包含所有產品資料，包含說明書、驅動程式，開源範例與官方姿態記錄軟體，<br>
 用戶可參考範例與使用手冊自行創造更多應用，本公司並不免費提供額外的應用支援。<br>
 
 聯繫我們 : https://hipnuc.com/
+
+軟體簡介與常見問答 : https://hipnuc.com/mkdocs_tc/site/index.html
 
 Email : [hipnuctw@gmail.com](mailto:hipnuctw@gmail.com)
 
