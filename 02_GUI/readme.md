@@ -16,7 +16,14 @@
 如有發現問題請回報 hipnuctw@gmail.com
 如遇上執行 GUI 提示缺少 msvcpXXX.dll 的狀況，請安裝 VC_redist.x86.exe
 
-## V1.2.1 Latest
+## V1.2.2 Latest
+
+update:
+
+- 新增FFT頻域分析，協助振動分析
+- 新增波形圖低通濾波功能，協助振動分析
+
+### V1.2.1
 
 update:
 
