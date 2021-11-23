@@ -12,11 +12,19 @@
 
 - 模組參數設定，如採樣率、鮑率、ID、無線節點 GWID
 
-
 如有發現問題請回報 hipnuctw@gmail.com
 如遇上執行 GUI 提示缺少 msvcpXXX.dll 的狀況，請安裝 VC_redist.x86.exe
 
-## V1.2.2 Latest
+
+
+## V1.2.3 Latest
+update:
+
+- 新增can接口協議支援
+- 效能與臭蟲修正
+
+
+### V1.2.2
 
 update:
 
