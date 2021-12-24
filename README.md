@@ -22,13 +22,14 @@
 
 
 
-### Windows、linux 官方姿態軟體 : CHCenter 
+### IMU 助手 : CHCenter (Windows、Linux)
 
 CHCenter 介紹:
 [![CHCenter](http://img.youtube.com/vi/BMr5ByL2h8w/0.jpg)](http://www.youtube.com/watch?v=BMr5ByL2h8w "CHCenter")
 
 ### [→下載最新版 CHCenter for windows](https://github.com/avmm9898/hipnuctw_doc/raw/master/02_GUI/CHCenter_v1.2.3_win32.zip)
 
+### [→下載最新版 CHCenter for linux64](https://github.com/avmm9898/hipnuctw_doc/raw/master/02_GUI/CHCenter_v1.2.3_linux64.zip)
 
 
 包含所有產品的 :
