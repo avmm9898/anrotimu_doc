@@ -14,7 +14,7 @@ IMU產品整合常用 Uart to USB 晶片，如 CP210x 與 CH340，近年 Linux k
 
 有的話比較能確定能夠讀取設備，但開發版種類多且未必整合完善，不保證沒有 Bug。
 
-![](md/tutorial/RPIFigures/kernel.png)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/kernel.png">
 
 經測試並正常運行的設備:
 
@@ -37,7 +37,7 @@ unzip CH_demo_python.zip
 
 檔案如下 : 
 
-![](md/tutorial/RPIFigures/files.png)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/files.png">
 
 
 
@@ -55,7 +55,7 @@ ls /dev
 
 (詳細設定請參考 Step 3)
 
-![](md/tutorial/RPIFigures/config.png)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/config.png">
 
 
 
@@ -63,19 +63,19 @@ ls /dev
 
 檢查 python 版本，安裝 pyserial :
 
-![](md/tutorial/RPIFigures/pyserial.png)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/pyserial.png">
 
 
 
 然後於 terminal 執行 demo.py :
 
-![](md/tutorial/RPIFigures/cmd_demo.png)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/cmd_demo.png">
 
 
 
 開始接收資料 : 
 
-![](md/tutorial/RPIFigures/result.png)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/result.png">
 
 
 

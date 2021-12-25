@@ -1,4 +1,4 @@
-# ROS2 串列埠範例
+# ROS2串列埠例程
 
 本文件介紹如何在ROS2下來讀取HI226/HI229/CH100/CH110的數據，並提供了c++語言例程程式碼，通過執行ROS2命令，執行相應的節點，就可以看到列印到終端上的資訊。
 
@@ -18,7 +18,7 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 2. 檢視是否已經存在  ttyUSBx 這個裝置檔案，便於確認對應的埠號。x表示USB裝置號，由於Ubuntu USB裝置號為從零開始依次累加，所以多個裝置每次開機後設備號是不固定的，需要確定裝置的裝置號。
 3. 接下來插入USB線，連線除錯板，然後再次執行`ls /dev`。 dev目錄下多了一個裝置, 如圖：
 
-![](./img/2.png)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros2/img/2.png">
 
 **ttyUSB0** 檔案就是除錯版在ubuntu系統中產生的裝置(後面的數字是不固定的，有可能為 ttyUSB1  或 ttyUSB2)
 
@@ -66,7 +66,7 @@ linux@ubuntu20:~/serial_imu_ws$
 1. 在windows系統下進行配置模組，使能四元數輸出。
 2. 使用Window下 CHCenter上位機進行配置：先把模組連線到PC機上。然後使用CHCenter工具進行 連線對應的com口，點選 __工具__  --->  __配置模組__，在彈出的新視窗中，點選__ATCMD__，然後在輸入框中輸入AT指令：`AT+SETPTL=0x91`，點選發送，接收區最後顯示 __ok__ ，說明配置成功，斷電重啟模組。執行`ros2 launch serial_imu imu_spec_msg.launch.py`命令。執行成功后，就可以看到ROS定義的IMU話題訊息：
 
-```txt
+```c
 [listener-2] ---
 [listener-2] header:
 [listener-2] 	stamp:
@@ -90,8 +90,6 @@ linux@ubuntu20:~/serial_imu_ws$
 [listener-2] 	z: 5.013053989410400924
 [listener-2] linear_acceleration_covariance: [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 [listener-2] ---
-
-
 ```
 
 	3、另開一個終端視窗，執行`ros2 topic hz /Imu_data`，可以檢視話題發佈的頻率。
@@ -179,7 +177,6 @@ linux@ubuntu:~$ udevadm info --attribute-walk --name=/dev/ttyUSB1
     ATTRS{removable}=="unknown"
     ATTRS{serial}=="9c1d818b48aeeb119d082897637728c5"
 ......(資訊太多了，就不全部放出來了，大家可以自己去看看詳細的資訊,這裡只放出本次需要關心的資訊)
-
 ```
 
 最後是ttyUSB2的詳細資訊：
@@ -215,7 +212,7 @@ linux@ubuntu：~$ sudo vi defined_serial.rules
 
 然後在這個檔案中輸入如下內容：
 
-![](img/6.png)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros2/img/6.png">
 
 格式如下：
 

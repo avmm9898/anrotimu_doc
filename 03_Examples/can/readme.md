@@ -4,14 +4,15 @@
 
 * CAN介面符合CANopen協議，所有通訊均使用標準數據幀，只使用PTO1-4 傳輸數據，所有傳輸均採用標準數據幀，不接收遠端幀和拓展數據幀
 * 所有PTO採用非同步定時觸發模式。
-* 提供eds檔案下載: [**TaskSlave.eds**](https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/CAN/TaskSlave.eds)
+* 提供eds檔案下載: [**TaskSlave.eds**](https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/can/TaskSlave.eds)
 
 
 
 ## 如何透過 USB 轉 CAN-FD 分析儀對產品進行測試?
 
-![](../img/product/canfd.png)
-[需要購買CAN-FD 分析儀?](contact.html)
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/can/img/canfd.png">
+
+[需要購買CAN-FD 分析儀?](https://www.ruten.com.tw/item/show?22025707456011)
 
 
 
@@ -42,8 +43,7 @@
 
 使用上位機CHCenter， 選擇專門配合上位機評估用的USB-CAN轉接器，會彈出統計/配置頁面，選擇CANopen節點ID號(預設8)點選 設定(Set/Read Config),即可搜索並連線模組，同時在接收框(Rx Message)中會顯示收到的CAN訊息及幀率，如下圖所示:
 
-![](md/tutorial/chcenter_can.png)
-
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/can/img/chcenter_can.png">
 
 
   ### CANOpen介面常用命令舉例
