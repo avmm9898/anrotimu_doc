@@ -25,7 +25,7 @@ IMU產品整合常用 Uart to USB 晶片，如 CP210x 與 CH340，近年 Linux k
 
 ### Step 1. 下載
 
-瀏覽器下載並解壓 : [CH_demo_python.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/Python/CH_demo_python.zip)
+瀏覽器下載並解壓 : [CH_demo_python.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/python/CH_demo_python.zip)
 
 或 :
 

@@ -1,5 +1,9 @@
 # ROS2串列埠例程
 
+原始碼(瀏覽器下載並解壓 ): [CH_demo_ros2.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/ros2/CH_demo_ros2.zip)
+
+
+
 本文件介紹如何在ROS2下來讀取HI226/HI229/CH100/CH110的數據，並提供了c++語言例程程式碼，通過執行ROS2命令，執行相應的節點，就可以看到列印到終端上的資訊。
 
 * 測試環境：Ubuntu20.04   

@@ -1,6 +1,6 @@
 # Qt C++ 範例
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_qtc++.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/QT%20C%2B%2B/CH_demo_qtc%2B%2B.zip)
+原始碼(瀏覽器下載並解壓 ): [CH_demo_qtc++.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/qt_cplusplus/CH_demo_qtc%2B%2B.zip)
 
 測試環境:
 

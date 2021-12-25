@@ -1,6 +1,6 @@
 ## 單元 : Ubuntu 範例
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_ubuntu.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/Ubuntu/CH_demo_ubuntu.zip)
+原始碼(瀏覽器下載並解壓 ): [CH_demo_ubuntu.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/ubuntu/CH_demo_ubuntu.zip)
 
 介紹如何在 Ubuntu 環境中讀取 HI221/HI221Dongle/HI226/HI229/CH100/CH110 的數據，提供了c代碼，用於讀取模組的數據。
 

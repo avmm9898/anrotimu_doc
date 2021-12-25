@@ -2,7 +2,7 @@
 
 
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_stm32.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/STM32/CH_demo_stm32.zip)
+原始碼(瀏覽器下載並解壓 ): [CH_demo_stm32.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/stm32/CH_demo_stm32.zip)
 
 本範例提供了C 語言範例代碼，用戶接收HI226/HI229及HI221數據。
 
