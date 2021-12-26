@@ -26,4 +26,4 @@
 
 - raw.imu.quat
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/matlab/img/.png">
+<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/matlab/img/2.png">
