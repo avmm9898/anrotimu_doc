@@ -79,7 +79,7 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 
 ### 	5.1：輸出IMU原始數據
 
-1.打開另一個終端，執行：
+1. 打開另一個終端，執行：
 
     ```shell
     $ roslaunch imu_launch imu_msg.launch imu_package:=0x91
@@ -103,7 +103,6 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
        Eul(R P Y):   52.01   -66.63   -60.77
     Quat(W X Y Z):   0.770    0.066   -0.611   -0.172
     ```
-
 
 
 ### 5.2：輸出ROS標準 Imu.msg
