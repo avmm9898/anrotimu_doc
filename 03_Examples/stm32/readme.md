@@ -4,14 +4,14 @@
 
 原始碼(瀏覽器下載並解壓 ): [CH_demo_stm32.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/stm32/CH_demo_stm32.zip)
 
-本範例提供了C 語言範例代碼，用戶接收HI226/HI229及HI221數據。
+本範例提供了C 語言範例代碼，用戶接收Hi226/Hi229及Hi221數據。
 
 - 測試環境：Windows10_x64 操作系統
 	
 - 編譯器：keil_V5.28
 - 開發板：正點原子-戰艦V3 STM32F103ZET6
 	
-- 測試設備：HI226/HI229
+- 測試設備：Hi226/Hi229
 
 ### 硬體連接
 
