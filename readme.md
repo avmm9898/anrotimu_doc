@@ -6,13 +6,13 @@
 
 | 資料夾            | 說明               |
 | ---------------- | ------------------ |
-| 01_UserManual | IMU 產品用戶手冊 (CH110、HI221、HI226、HI229) |
-| 02_GUI |使用者介面，呈現圖表、數值、記錄功能，僅支援 Windows |
-| 03_Examples |   資料接收程式原始碼及各語言範例       |
-| 04_UsbDrivers | 提供 Windows/Linux 的 USB 驅動，一般已經內建。<br/>CH110/HI226/HI229 請安裝 CP2104.zip。<br/>HI221/221GW 請安裝 CH341SER.EXE。 |
-| 05_OpenHardware | HI226/HI229的硬體尺寸圖 |
+| 01_UserManual | IMU 產品用戶手冊 |
+| 02_GUI |IMU 快速上手軟體，圖表呈現、數值、記錄、模組設定功能 |
+| 03_Examples |   資料接收程式範例       |
+| 04_UsbDrivers | 提供 Windows/Linux 的 USB 驅動 |
 
-### 產品說明書
+
+### IMU系列產品說明書
 
 - HI221/HI221 Dongle 無線慣性感測器([PDF](https://github.com/avmm9898/hipnuctw_doc/raw/master/01_UserManual/hi221.pdf))
 - HI226 六軸慣性感測器([PDF](https://github.com/avmm9898/hipnuctw_doc/raw/master/01_UserManual/hi226.pdf))
@@ -22,17 +22,17 @@
 
 
 
-### IMU 助手 : CHCenter (Windows、Linux)
+### IMU 快速上手軟體: 支援 Windows、Linux
 
-CHCenter 介紹:
+
 [![CHCenter](http://img.youtube.com/vi/BMr5ByL2h8w/0.jpg)](http://www.youtube.com/watch?v=BMr5ByL2h8w "CHCenter")
 
-### [→下載最新版 CHCenter for windows](https://github.com/avmm9898/hipnuctw_doc/raw/master/02_GUI/CHCenter_v1.2.3_win32.zip)
+### [→下載最新版 (Windows)](https://github.com/avmm9898/hipnuctw_doc/raw/master/02_GUI/CHCenter_v1.2.3_win32.zip)
 
-### [→下載最新版 CHCenter for linux64](https://github.com/avmm9898/hipnuctw_doc/raw/master/02_GUI/CHCenter_v1.2.3_linux64.zip)
+### [→下載最新版 (Linux64)](https://github.com/avmm9898/hipnuctw_doc/raw/master/02_GUI/CHCenter_v1.2.3_linux64.zip)
 
 
-包含所有產品的 :
+包含IMU系列產品的 :
 
 - X Y Z 多軸即時數據、波形圖
 - 3D 姿態顯示
