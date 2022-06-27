@@ -1,6 +1,6 @@
 ## 單元 : Ubuntu 範例
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_esp32.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/esp32/CH_demo_esp32zip)
+原始碼(瀏覽器下載並解壓 ): [CH_demo_esp32.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/esp32/CH_demo_esp32.zip)
 
 本範例示範如何透過ESP32讀取具有Uart接口的IMU產品
 
