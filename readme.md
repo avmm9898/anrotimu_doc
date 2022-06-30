@@ -2,8 +2,6 @@
 
 產品詢價與技術問題請聯繫我們: [hipnuctw@gmail.com](mailto:hipnuctw@gmail.com)
 
-線上賣場:https://www.ruten.com.tw/store/hipnuc_tw
-
 | 資料夾            | 說明               |
 | ---------------- | ------------------ |
 | 01_UserManual | IMU 產品用戶手冊 |
