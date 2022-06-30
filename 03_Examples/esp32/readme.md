@@ -19,7 +19,7 @@
 
 
 
-xzens_imu.ino
+使用 ArduinoIDE 開啟 .ino
 
 ```c++
 /* Use Uart Pin 25,27
