@@ -171,8 +171,8 @@ For product inquiries and technical questions, please contact us: [hipnuctw@gmai
 | Folder | Description |
 | ---------------- | ------------------ |
 | 01_UserManual | IMU Product User Manual |
-| 02_GUI |IMU quick start software, chart presentation, numerical value, recording, module setting functions |
-| 03_Examples | Data receiving program example |
+| 02_GUI |IMU quick start software, chart, raw data, recording, module setting |
+| 03_Examples | Example of data receiving program  |
 | 04_UsbDrivers | Provides USB drivers for Windows/Linux |
 
 
