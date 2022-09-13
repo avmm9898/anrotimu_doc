@@ -8,14 +8,6 @@
 
 
 
-## 如何透過 USB 轉 CAN-FD 分析儀對產品進行測試?
-
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/can/img/canfd.png">
-
-[需要購買CAN-FD 分析儀?](https://www.ruten.com.tw/item/show?22025707456011)
-
-
-
 ### CANopen 預設設定
 
 | CANopen預設配置 | 值                     |
