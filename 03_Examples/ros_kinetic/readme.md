@@ -4,13 +4,13 @@
 
 
 
-本文件介紹如何在ROS下來讀取HI226/HI229的數據，並提供了c++語言例程程式碼，通過執行ROS命令，執行相應的節點，就可以看到列印到終端上的資訊。
+本文件介紹如何在ROS下來讀取ANROTIMU的數據，並提供了c++語言例程程式碼，通過執行ROS命令，執行相應的節點，就可以看到列印到終端上的資訊。
 
 * 測試環境：Ubuntu16.04   
 
 * ROS版本：ROS Kinetic Kame
 
-* 測試裝置：HI226 HI229  CH100  CH110(USB)
+* 測試裝置：Hi221 Hi226/229 CH100 CH110 CH104 CH108(USB)
 
 ## 1. 安裝USB-UART驅動
 
@@ -24,7 +24,7 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 
 <img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros/img/2.png">
 
-**ttyUSB0** 檔案就是除錯版在ubuntu系統中產生的裝置(後面的數字是不固定的，有可能為 ttyUSB1  或 ttyUSB2)
+**ttyUSB0** 檔案就是除錯版在ubuntu系統中產生的裝置(後面的數字是不固定的，有可能是 ttyUSB1 或 ttyUSB2)
 
 5. 打開USB裝置的可執行許可權：
 
@@ -60,7 +60,7 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 
 1. 在Ubuntu環境中，支援的波特率為115200, 460800, 921600。本例程使用的預設波特率是115200，預設打開的串列埠名稱是/dev/ttyUSB0。	
 
-2. 如果您需要更高的輸出頻率，請編輯serial_imu.cpp檔案，修改serial_imu.cpp檔案中的宏定義，改為其他波特率。
+2. 如果您需要更高的輸出頻率，請編輯serial_imu.cpp檔案，修改serial_imu.cpp檔案中的#define區段，改為其他波特率。
 
     ```c
     #define IMU_SERIAL ("/dev/ttyUSB0")
@@ -108,7 +108,7 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 ### 5.2：輸出ROS標準 Imu.msg
 
 1. 在windows系統下進行配置模組，使能四元數輸出。
-2. 使用Window下 CHCenter上位機進行配置：先把模組連線到PC機上。然後使用CHCenter工具進行 連線對應的com口，點選 __工具__  --->  __配置模組__，在彈出的新視窗中，點選__ATCMD__，然後在輸入框中輸入AT指令：`AT+SETPTL=0x91`，點選發送，接收區最後顯示 __ok__ ，說明配置成功，斷電重啟模組。執行`roslaunch imu_launch imu_msg.launch`命令。執行成功后，就可以看到ROS定義的IMU話題訊息：
+2. 使用Window下 ANROTIMU-UI上位機進行配置：先把模組連接到PC主機上，開啟ANROTIMU-UI，連接對應的com口，點選 __工具__  --->  __配置模組__，在彈出的新視窗中，點選__ATCMD__，然後在輸入框中輸入AT指令：`AT+SETPTL=0x91`，點選發送，接收區最後顯示 __ok__ ，說明配置成功，斷電重啟模組。執行`roslaunch imu_launch imu_msg.launch`命令。執行成功后，就可以看到ROS定義的IMU話題訊息：
 
     ```c
     header: 
@@ -300,7 +300,7 @@ BLUETOOCH        loop4               snd       tty35  ttyprintk  ttyUSB2
 ....
 CH110            mcelog              tty0      tty40  ttyS13     vcs1
 ....
-HI226            rfkill              tty22     tty54  ttyS27     vfio
+Hi221            rfkill              tty22     tty54  ttyS27     vfio
 ....
 ```
 

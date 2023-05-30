@@ -1,20 +1,22 @@
 # RaspberryPi+Python (其他 x86/arm 架構 Linux 設備可參考)
 
-環境 : RaspberryPi 3 & 4，Python 3.4+套件pyserial
+環境: RaspberryPi 3 & 4，Python 3.6+套件pyserial=3.4
 
-產品 : 以 USB 輸出的產品如 HI221/HI221Dongle/HI226/HI229/CH100/CH110
+產品: 以RS232(若要連接USB需自行搭配轉接器)、USB輸出的產品如 Hi221/Hi221Dongle/Hi221/Hi221/CH100/CH104/CH108
+
+
 
 > 本教學僅供基本參考，更多的延伸或應用問題本司不提供支援
 
 
 
-IMU產品整合常用 Uart to USB 晶片，如 CP210x 與 CH340，近年 Linux kernel 都已內建驅動，
+ANROTIMU使用的 Uart to USB 晶片，如 CP210x 與 CH340，近年 Linux kernel 都已內建驅動，
 
 可以確認類似的路徑中 `/lib/modules/5.4.83+/kernel/drivers/usb/serial`，有沒有 `ch341.ko` & `cp210x.ko`，如下圖。
 
 有的話比較能確定能夠讀取設備，但開發版種類多且未必整合完善，不保證沒有 Bug。
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/kernel.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/python/img/kernel.png">
 
 經測試並正常運行的設備:
 
@@ -25,19 +27,19 @@ IMU產品整合常用 Uart to USB 晶片，如 CP210x 與 CH340，近年 Linux k
 
 ### Step 1. 下載
 
-瀏覽器下載並解壓 : [CH_demo_python.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/python/CH_demo_python.zip)
+瀏覽器下載並解壓 : [anrot_demo_python.zip](https://github.com/avmm9898/anrotimu_doc/raw/master/03_Examples/Python/anrot_demo_python.zip)
 
 或 :
 
 ```
 cd ~
-wget https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/Python/CH_demo_python.zip
-unzip CH_demo_python.zip
+wget https://github.com/avmm9898/anrotimu_doc/raw/master/03_Examples/Python/anrot_demo_python.zip
+unzip anrot_demo_python.zip
 ```
 
 檔案如下 : 
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/files.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/python/img/files.png">
 
 
 
@@ -55,7 +57,7 @@ ls /dev
 
 (詳細設定請參考 Step 3)
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/config.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/python/img/config.png">
 
 
 
@@ -63,19 +65,19 @@ ls /dev
 
 檢查 python 版本，安裝 pyserial :
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/pyserial.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/python/img/pyserial.png">
 
 
 
 然後於 terminal 執行 demo.py :
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/cmd_demo.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/python/img/cmd_demo.png">
 
 
 
 開始接收資料 : 
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/python/img/result.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/python/img/result.png">
 
 
 
@@ -97,8 +99,8 @@ import time
 
 if __name__ == '__main__':
 
-    # m_IMU_serial= class of hipnuc_module 
-    m_IMU_serial = hipnuc_module('./config.json')
+    # m_IMU_serial= class of anrot_module 
+    m_IMU_serial = anrot_module('./config.json')
 
     while True:
         try:
@@ -122,7 +124,7 @@ if __name__ == '__main__':
 
 #### API 與 congig.json 說明
 
-class `hipnuc_module(*path_configjson=None*)`
+class `anrot_module(*path_configjson=None*)`
 
 超核模組類，用於接收、處理超核模組資訊。
 
@@ -148,7 +150,7 @@ class `hipnuc_module(*path_configjson=None*)`
 
 **json 文件配置說明**
 
-在初始化 hipnuc_module 時，需要傳入 json 配置文件的路徑
+在初始化 anrot_module 時，需要傳入 json 配置文件的路徑
 
 
 ```json
@@ -182,15 +184,15 @@ class `hipnuc_module(*path_configjson=None*)`
 
 
 2.波特率(鮑率/Baud/baudrate) `"baudrate"`:
-序列埠波特率請根據模組實際參數進行設置，為`115200/460800/921600`，3種可能，115200 為單顆 IMU 適用，某些 HI221 或  HI221Dongle 客戶可能會設定為 460800 或 921600。可透過官方軟體 [CHCenter](https://github.com/avmm9898/hipnuctw_doc/tree/master/02_GUI) 進行設定。
+序列埠波特率請根據模組實際參數進行設置，為`115200/460800/921600`，3種可能，115200 為單顆 IMU 適用，某些 Hi221 或  Hi221Dongle 客戶可能會設定為 460800 或 921600。可透過官方軟體 [CHCenter](https://github.com/avmm9898/anrotimu_doc/tree/master/02_GUI) 進行設定。
 
 
 
 3.數據類型`"report_datatype"`：
 匯報數據種類。模組將會回傳多種數據資訊，true 表示開啟解碼，false 表示禁止解碼。
 
-- imusol : 0x91 單節點全資訊封包，HI221/HI226/HI229/CH100/CH110 產品預設傳輸模式。
-- gwsol : 0x62 多節點接收機全資訊封包，HI221Dongle 預設傳輸模式。
+- imusol : 0x91 單節點全資訊封包，Hi221/Hi221/Hi221/CH100/CH110/CH104/CH108 產品預設傳輸模式。
+- gwsol : 0x62 多節點接收機全資訊封包，Hi221Dongle 預設傳輸模式。
 - id : 0x90，單節點ID
 - acc : 0xA0，單節點加速度
 - gyr : 0xB0，單節點角速度
@@ -202,7 +204,7 @@ class `hipnuc_module(*path_configjson=None*)`
 
 #### 模組傳輸內容示範
 
-**HI221/HI226/HI229/CH100/CH110 預設傳輸模式 (0x91協議)**
+**Hi221/Hi226/Hi229/CH100/CH110/CH104/CH108 預設傳輸模式 (0x91協議)**
 
 產品回傳內容為 :
 
@@ -237,7 +239,7 @@ print(data['acc'])
 
 
 
-**HI221Dongle 無線接收器預設傳輸模式 (0x62協議)**
+**Hi221Dongle 無線接收器預設傳輸模式 (0x62協議)**
 
 產品回傳內容為 :
 
@@ -259,7 +261,7 @@ return temp_dic
 一幀 data 內含以下資料 : `GWD, CNT, id, timestamp, acc, gyr, mag, euler, quat`
 
 - **GWD**: 無線接收機 ID (GWID)
-- **CNT**: 在線的無線節點 (HI221) 數量
+- **CNT**: 在線的無線節點 (Hi221) 數量
 - **id**: 節點 ID
 - **timestamp** : 自開機起傳送的幀數
 - **acc** : 加速度，順序為 X Y Z 軸，單位=1G (1G = 1x重力加速度)

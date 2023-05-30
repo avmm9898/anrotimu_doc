@@ -4,13 +4,13 @@
 
 
 
-本文件介紹如何在ROS2下來讀取HI226/HI229/CH100/CH110的數據，並提供了c++語言例程程式碼，通過執行ROS2命令，執行相應的節點，就可以看到列印到終端上的資訊。
+本文件介紹如何在ROS2下來讀取Hi221/Hi221/CH100/CH110/CH104/CH108的數據，並提供了c++語言例程程式碼，通過執行ROS2命令，執行相應的節點，就可以看到列印到終端上的資訊。
 
 * 測試環境：Ubuntu20.04   
 
 * ROS版本：ROS2 Foxy
 
-* 測試裝置：HI226 HI229  CH100  CH110(USB)
+* 測試裝置：Hi221 Hi226/229 CH100 CH110 CH104 CH108(USB)
 
 ## 1. 安裝USB-UART驅動
 
@@ -61,14 +61,14 @@ linux@ubuntu20:~/serial_imu_ws$
 
 ## 4. 顯示數據
 
-本例程提供了一種檢視數據方式：
+本範例提供了一種檢視數據方式：
 
-	1、輸出ROS 定義的sensor_msgs::Imu。
+	輸出ROS定義的sensor_msgs::Imu。
 
 ###  4.1：輸出ROS標準 Imu.msg
 
-1. 在windows系統下進行配置模組，使能四元數輸出。
-2. 使用Window下 CHCenter上位機進行配置：先把模組連線到PC機上。然後使用CHCenter工具進行 連線對應的com口，點選 __工具__  --->  __配置模組__，在彈出的新視窗中，點選__ATCMD__，然後在輸入框中輸入AT指令：`AT+SETPTL=0x91`，點選發送，接收區最後顯示 __ok__ ，說明配置成功，斷電重啟模組。執行`ros2 launch serial_imu imu_spec_msg.launch.py`命令。執行成功后，就可以看到ROS定義的IMU話題訊息：
+1. 在Windows系統下進行配置模組，使能四元數輸出。
+2. 使用Window ANROTIMU-UI上位機進行配置：先把模組連接到PC主機上，開啟ANROTIMU-UI，連接對應的com口，點選 __工具__  --->  __配置模組__，在彈出的新視窗中，點選__ATCMD__，然後在輸入框中輸入AT指令：`AT+SETPTL=0x91`，點選發送，接收區最後顯示 __ok__ ，說明配置成功，斷電重啟模組。執行`ros2 launch serial_imu imu_spec_msg.launch.py`命令。執行成功后，就可以看到ROS定義的IMU話題訊息：
 
 ```c
 [listener-2] ---
@@ -238,7 +238,7 @@ BLUETOOCH        loop4               snd       tty35  ttyprintk  ttyUSB2
 ....
 CH110            mcelog              tty0      tty40  ttyS13     vcs1
 ....
-HI226            rfkill              tty22     tty54  ttyS27     vfio
+Hi221            rfkill              tty22     tty54  ttyS27     vfio
 ....
 ```
 
