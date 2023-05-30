@@ -1,10 +1,10 @@
 ## 單元 : ESP32 範例
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_esp32.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/esp32/CH_demo_esp32.zip)
+原始碼(瀏覽器下載並解壓 ): [anrot_demo_esp32.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/esp32/anrot_demo_esp32.zip)
 
-本範例示範如何透過ESP32讀取具有Uart接口的IMU產品
+本範例示範如何透過ESP32讀取具有Uart接口的IMU產品(注意，此為TTL電位，若使用RS232需自行轉接)
 
-適用:Hi221/Dongle, Hi226, Hi229, CH100, CH110
+適用:Hi22x,CH100,CH10x
 
 
 

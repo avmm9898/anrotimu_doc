@@ -4,9 +4,10 @@
 
 * CAN介面符合CANopen協議，所有通訊均使用標準數據幀，只使用PTO1-4 傳輸數據，所有傳輸均採用標準數據幀，不接收遠端幀和拓展數據幀
 * 所有PTO採用非同步定時觸發模式。
-* 提供eds檔案下載: [**TaskSlave.eds**](https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/can/TaskSlave.eds)
+* 提供eds檔案下載: [**TaskSlave.eds**](https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/can/TaskSlave.eds)
+* 提供dbc檔案下載: [**CANopen.dbc**](https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/can/CANopen.dbc)
 
-
+更詳細的使用請看產品說明書。
 
 ### CANopen 預設設定
 
@@ -28,14 +29,6 @@
 | TPDO3   | 0x380+ID | 6           | 非同步定時(0xFE) | 100                  | 歐拉角   | 數據型別為(int16,低位元組在前，每個軸2位元組，共6位元組)，順序分別為 橫滾角:Roll, 俯仰角:Pitch, 航向角:Yaw。單位為0.01° |
 | TPDO4   | 0x480+ID | 8           | 非同步定時(0xFE) | 100                  | 四元數   | 數據型別為(int16,低位元組在前,每個元素2位元組，共8位元組)，分別為$$ q_{w} \ q_{x}\ q_{y}\ q_{z}$$ 。單位四元數擴大10000倍后結果。如四元數為1,0,0,0 時, 輸出10000,0,0,0. |
 | TPDO5   | 0x680+ID | 4           | 非同步定時(0xFE) | 20                   | 氣壓     | 單位Pa                                                       |
-
-
-
-  ### 使用上位機連線CAN裝置
-
-使用上位機CHCenter， 選擇專門配合上位機評估用的USB-CAN轉接器，會彈出統計/配置頁面，選擇CANopen節點ID號(預設8)點選 設定(Set/Read Config),即可搜索並連線模組，同時在接收框(Rx Message)中會顯示收到的CAN訊息及幀率，如下圖所示:
-
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/can/img/chcenter_can.png">
 
 
   ### CANOpen介面常用命令舉例

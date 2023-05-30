@@ -2,7 +2,7 @@
 
 
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_stm32.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/stm32/CH_demo_stm32.zip)
+原始碼(瀏覽器下載並解壓 ): [anrot_demo_stm32.zip](https://github.com/avmm9898/anrotimu_doc/raw/master/03_Examples/stm32/anrot_demo_stm32.zip)
 
 本範例提供了C 語言範例代碼，用戶接收Hi226/Hi229及Hi221數據。
 
@@ -15,14 +15,14 @@
 
 ### 硬體連接
 
-將Hi226/Hi229 正確插入到超核調試板上。
+將Hi226/Hi229正確插入到超核調試板上。
 
-| 超核調試板 | 正點原子開發板 |
-| ---------- | -------------- |
-| RXD        | PA2(TXD)       |
-| TXD        | PA3(RXD)       |
-| 3.3V       | 3V3            |
-| GND        | GND            |
+| Hi229 Develop board | 正點原子開發板 |
+| ------------------- | -------------- |
+| RXD (TTL)           | PA2(TXD)       |
+| TXD (TTL)           | PA3(RXD)       |
+| 3.3V                | 3V3            |
+| GND                 | GND            |
 
 用杜邦線將上表相對應的引腳連接起來。
 	

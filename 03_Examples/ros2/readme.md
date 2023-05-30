@@ -1,30 +1,30 @@
-# ROS2串列埠例程
+# ROS2串列埠範例
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_ros2.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/ros2/CH_demo_ros2.zip)
+原始碼(瀏覽器下載並解壓 ): [anrot_demo_ros2.zip](https://github.com/avmm9898/anrotimu_doc/raw/master/03_Examples/ros2/anrot_demo_ros2.zip)
 
 
 
-本文件介紹如何在ROS2下來讀取Hi221/Hi221/CH100/CH110/CH104/CH108的數據，並提供了c++語言例程程式碼，通過執行ROS2命令，執行相應的節點，就可以看到列印到終端上的資訊。
+本文件介紹如何在ROS2讀取ANROTIMU的數據，並提供了c++語言程式碼，通過執行ROS2命令，執行相應的節點，列印數據到終端上。
 
 * 測試環境：Ubuntu20.04   
 
 * ROS版本：ROS2 Foxy
 
-* 測試裝置：Hi221 Hi226/229 CH100 CH110 CH104 CH108(USB)
+* 測試裝置：Hi221 Hi226/229 CH100 CH110 CH104 CH108
 
 ## 1. 安裝USB-UART驅動
 
-Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將除錯版連線到電腦上時，會自動識別裝置。識別成功后，會在dev目錄下出現一個對應的裝置:ttyUSBx
+Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將除錯版連線到電腦上時，會自動識別裝置。識別成功後會在dev目錄下出現一個對應的裝置:ttyUSBx
 
 檢查USB-UART裝置是否被Ubantu識別：
 
 1. 打開終端，輸入`ls /dev`,先檢視已經存在的串列埠裝置。
-2. 檢視是否已經存在  ttyUSBx 這個裝置檔案，便於確認對應的埠號。x表示USB裝置號，由於Ubuntu USB裝置號為從零開始依次累加，所以多個裝置每次開機後設備號是不固定的，需要確定裝置的裝置號。
+2. 檢視是否已經存在  ttyUSBx 這個裝置檔案，便於確認對應的埠號。x表示USB裝置號，由於Ubuntu USB裝置號為從零開始依次累加，所以多個裝置每次開機後設備號並不固定，需要確定裝置的裝置號。
 3. 接下來插入USB線，連線除錯板，然後再次執行`ls /dev`。 dev目錄下多了一個裝置, 如圖：
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros2/img/2.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/ros2/img/2.png">
 
-**ttyUSB0** 檔案就是除錯版在ubuntu系統中產生的裝置(後面的數字是不固定的，有可能為 ttyUSB1  或 ttyUSB2)
+**ttyUSB0** USB Port 在ubuntu系統中產生的裝置(後面的數字是不固定的，有可能為 ttyUSB1 或 ttyUSB2)
 
 5. 打開USB裝置的可執行許可權：
 
@@ -48,9 +48,9 @@ linux@ubuntu20:~/serial_imu_ws$
 
 ## 3. 修改串列埠波特率和裝置號
 
-1. 在Ubuntu環境中，支援的波特率為115200, 460800, 921600。本例程使用的預設波特率是115200，預設打開的串列埠名稱是/dev/ttyUSB0。	
+1. 在Ubuntu環境中，支援的波特率為115200, 460800, 921600。這裡使用的預設波特率是115200，預設打開的串列埠名稱是/dev/ttyUSB0。	
 
-2. 如果您需要更高的輸出頻率，請修改serial_port.cpp檔案中的宏定義，改為其他波特率。	
+2. 如果需要更高的輸出頻率，請修改serial_port.cpp檔案中的#define區段，改為其他波特率。	
 
 ```c
 #define IMU_SERIAL  ("/dev/ttyUSB0")
@@ -61,7 +61,7 @@ linux@ubuntu20:~/serial_imu_ws$
 
 ## 4. 顯示數據
 
-本範例提供了一種檢視數據方式：
+本範例提供一種檢視數據方式：
 
 	輸出ROS定義的sensor_msgs::Imu。
 
@@ -216,7 +216,7 @@ linux@ubuntu：~$ sudo vi defined_serial.rules
 
 然後在這個檔案中輸入如下內容：
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros2/img/6.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/ros2/img/6.png">
 
 格式如下：
 
@@ -242,4 +242,4 @@ Hi221            rfkill              tty22     tty54  ttyS27     vfio
 ....
 ```
 
-現在可以看到，自定義的usb埠名稱已經出來了，在操作的時候，直接操作對應的裝置檔案就好了，不用去理會埠的編號是多少了。
+現在可以看到，自定義的usb埠名稱已經出來了，在操作的時候，直接操作對應的裝置檔案就好，不用去理會埠的編號是多少。

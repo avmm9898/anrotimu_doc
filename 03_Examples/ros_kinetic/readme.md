@@ -1,6 +1,6 @@
 # ROS串列埠例程
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_ros.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/ros/CH_demo_ros.zip)
+原始碼(瀏覽器下載並解壓 ): [anrot_demo_ros.zip](https://github.com/avmm9898/anrotimu_doc/raw/master/03_Examples/ros_kinetic/anrot_demo_ros.zip)
 
 
 
@@ -22,7 +22,7 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 2. 檢視是否已經存在  ttyUSBx 這個裝置檔案，便於確認對應的埠號。x表示USB裝置號，由於Ubuntu USB裝置號為從零開始依次累加，所以多個裝置每次開機後設備號是不固定的，需要確定裝置的裝置號。
 4. 接下來插入USB線，連線除錯板，然後再次執行`ls /dev`。 dev目錄下多了一個裝置, 如圖：
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros/img/2.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/ros_kinetic/img/2.png">
 
 **ttyUSB0** 檔案就是除錯版在ubuntu系統中產生的裝置(後面的數字是不固定的，有可能是 ttyUSB1 或 ttyUSB2)
 
@@ -108,8 +108,9 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 ### 5.2：輸出ROS標準 Imu.msg
 
 1. 在windows系統下進行配置模組，使能四元數輸出。
-2. 使用Window下 ANROTIMU-UI上位機進行配置：先把模組連接到PC主機上，開啟ANROTIMU-UI，連接對應的com口，點選 __工具__  --->  __配置模組__，在彈出的新視窗中，點選__ATCMD__，然後在輸入框中輸入AT指令：`AT+SETPTL=0x91`，點選發送，接收區最後顯示 __ok__ ，說明配置成功，斷電重啟模組。執行`roslaunch imu_launch imu_msg.launch`命令。執行成功后，就可以看到ROS定義的IMU話題訊息：
-
+2. 預設皆使用0x91協議，如果有客戶自行修改過，再做此步驟修改回0x91:
+    使用Window的ANROTIMU-UI上位機進行配置：先把模組連接到PC主機上，開啟ANROTIMU-UI，連接對應的com口，點選 __工具__  --->  __配置模組__，在彈出的新視窗中，點選__ATCMD__，然後在輸入框中輸入AT指令：`AT+SETPTL=0x91`，點選發送，接收區最後顯示 __ok__ ，說明配置成功，斷電重啟模組。執行`roslaunch imu_launch imu_msg.launch`命令。執行成功后，就可以看到ROS定義的IMU話題訊息：
+    
     ```c
     header: 
       seq: 595
@@ -143,7 +144,7 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 
 ​	3、先點選左下角的Add標籤，然後在彈出視窗中，選擇 By display type標籤，查詢rviz_imu_plugin；找到之後，選擇它下面的imu標籤，點選OK, 這時，我們可以看到rviz的左側的展示視窗中已經成功新增上了Imu的標籤。在FixedFrame中填入**base_link** 。topic中新增 **/IMU_data**。這時，可以看到座標系隨感測器改變而改變。
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros/img/4.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/ros_kinetic/img/4.png">
 
 ### 5.4：3D顯示
 
@@ -159,7 +160,7 @@ Ubuntu 系統自帶CP210x的驅動，預設不需要安裝串列埠驅動。將�
 
 當在終端執行`sudo apt-get install ros-kinetic-serial`這條命令的時候，有可能會提示你
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros/img/5.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/ros_kinetic/img/5.png">
 
 爲了提供素材，serial故意輸錯的。
 
@@ -278,7 +279,7 @@ linux@ubuntu：~$ sudo vi defined_serial.rules
 
 然後在這個檔案中輸入如下內容：
 
-<img src="https://raw.githubusercontent.com/avmm9898/hipnuctw_doc/master/03_Examples/ros/img/6.png">
+<img src="https://raw.githubusercontent.com/avmm9898/anrotimu_doc/master/03_Examples/ros_kinetic/img/6.png">
 
 格式如下：
 

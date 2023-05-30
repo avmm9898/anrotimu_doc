@@ -1,11 +1,12 @@
 # Qt C++ 範例
 
-原始碼(瀏覽器下載並解壓 ): [CH_demo_qtc++.zip](https://github.com/avmm9898/hipnuctw_doc/raw/master/03_Examples/qt_cplusplus/CH_demo_qtc%2B%2B.zip)
+原始碼(瀏覽器下載並解壓 ): [anrot_demo_qtc++.zip](https://github.com/avmm9898/anrotimu_doc/raw/master/03_Examples/qt_cplusplus/anrot_demo_qtc%2B%2B.zip)
 
 測試環境:
 
 - QT 5.9.9 + Win10
-- 僅適用傳輸協議新版本(0x91，0x62，詳見說明書)
+- 僅適用ANROTIMU預設協議(0x91，0x62，詳見說明書)
+- 型號:Hi221/226/229, CH100/104/108
 
 ### Step 1. include 與 .pro 設定
 

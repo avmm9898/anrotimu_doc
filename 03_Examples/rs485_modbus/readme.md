@@ -1,0 +1,1 @@
+請使用 ModBus Poll - 64bit, Version 9.9.2 開啟
