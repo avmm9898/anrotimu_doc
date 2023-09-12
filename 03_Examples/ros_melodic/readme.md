@@ -1,12 +1,16 @@
 # ROS串列埠例程
 
-本文件介紹如何在ROS下來讀取超核慣導產品的數據，並提供了c++語言程式碼，通過執行ROS命令，執行相應的節點，就可以看到列印到終端上的資訊。
+本文件介紹如何在ROS下來讀取ANROTIMU的數據，並提供了c++語言程式碼，通過執行ROS命令，執行相應的節點，就可以看到列印到終端上的資訊。
 
 * 測試環境：Ubuntu18.04   
 
 * ROS版本：ROS Melodic Morenia
 
-* 測試裝置：Hi221 Hi226/229 CH100 CH110 CH104 CH108(USB)
+* 測試裝置：ANROTIMU 產品
+
+  
+
+原始碼(瀏覽器下載並解壓 ): [anrot_demo_ros.zip](https://github.com/avmm9898/anrotimu_doc/raw/master/03_Examples/ros_melodic/anrot_demo_ros.zip)
 
 ## 安裝USB-UART驅動
 
