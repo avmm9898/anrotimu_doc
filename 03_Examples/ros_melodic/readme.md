@@ -55,9 +55,9 @@ baud_rate: 115200
 frame_id: "base_link"
 imu_topic: "/IMU_data"
 
-#hipnuc data package ---> 0x91 
-frame_id_costom: "base_0x91_link"
-imu_topic_costom: "/imu_0x91_package"
+# data package 
+frame_id_costom: "base_link_hipnuc"
+imu_topic_costom: "/imu_package_hipnuc"
 ```
 
 修改完之後，儲存，使新配置生效。
